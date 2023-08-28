@@ -24,8 +24,8 @@ filterwarnings("ignore")
 # In[ ]:
 
 
-df =  pd.read_excel('//MPSTLPSRV2//TalepTahminPaylasim2//model//verison.xlsx')
-df1 =  pd.read_excel('//MPSTLPSRV2//TalepTahminPaylasim2/model//üretim.xlsx')
+df =  pd.read_excel('data/input/verison.xlsx')
+df1 =  pd.read_excel('data/output/uretim.xlsx')
 
 
 # In[ ]:
@@ -45,7 +45,7 @@ df = df.dropna()
 
 
 sehir=df["Şehir"]
-y_üret=df["Radiation"]
+y_uret=df["Radiation"]
 
 
 # In[ ]:
@@ -53,25 +53,25 @@ y_üret=df["Radiation"]
 
 toplam=0
 toplaagg=0
-aksaray_agırlık=0.1
-konya_agırlık=0.5
-nigde_agırlık=0.1
-karaman_agırlık=0.1
-nevsehir_agırlık=0.1
-kırsehir_agırlık=0.1
-toplaagırlık=aksaray_agırlık+nigde_agırlık+konya_agırlık+karaman_agırlık+nevsehir_agırlık+kırsehir_agırlık
-print(aksaray_agırlık)
-print(nigde_agırlık)
-print(konya_agırlık)
-print(karaman_agırlık)
-print(nevsehir_agırlık)
-print(kırsehir_agırlık)
+aksaray_agirlik=0.1
+konya_agirlik=0.5
+nigde_agirlik=0.1
+karaman_agirlik=0.1
+nevsehir_agirlik=0.1
+kirsehir_agirlik=0.1
+toplaagirlik=aksaray_agirlik+nigde_agirlik+konya_agirlik+karaman_agirlik+nevsehir_agirlik+kirsehir_agirlik
+print(aksaray_agirlik)
+print(nigde_agirlik)
+print(konya_agirlik)
+print(karaman_agirlik)
+print(nevsehir_agirlik)
+print(kirsehir_agirlik)
 
 
 # In[ ]:
 
 
-print(toplaagırlık)
+print(toplaagirlik)
 
 
 # In[ ]:
@@ -83,19 +83,19 @@ k=df[["Radiation","Solar Power","Temperature","Precipitation","Wind Speed","Low 
 # In[ ]:
 
 
-for v in range(len(y_üret.index)): 
+for v in range(len(y_uret.index)): 
     if (sehir[v] == 'AKSARAY') :
-        k[v:v+1]=k[v:v+1]*aksaray_agırlık       
+        k[v:v+1]=k[v:v+1]*aksaray_agirlik       
     elif(sehir[v] == 'NİĞDE') :
-        k[v:v+1]=k[v:v+1]*nigde_agırlık
+        k[v:v+1]=k[v:v+1]*nigde_agirlik
     elif(sehir[v] == 'KONYA') :
-        k[v:v+1]=k[v:v+1]*konya_agırlık
+        k[v:v+1]=k[v:v+1]*konya_agirlik
     elif(sehir[v] == 'KARAMAN') :
-        k[v:v+1]=k[v:v+1]*karaman_agırlık
+        k[v:v+1]=k[v:v+1]*karaman_agirlik
     elif(sehir[v] == 'KIRŞEHİR') :
-        k[v:v+1]=k[v:v+1]*kırsehir_agırlık
+        k[v:v+1]=k[v:v+1]*kirsehir_agirlik
     elif(sehir[v] == 'NEVŞEHİR') :
-        k[v:v+1]=k[v:v+1]*nevsehir_agırlık
+        k[v:v+1]=k[v:v+1]*nevsehir_agirlik
 
 
 # In[ ]:
@@ -203,17 +203,17 @@ sehir_tah=hava_tahmin["Şehir"]
 ke=hava_tahmin[["Radiation","Solar Power","Temperature","Precipitation","Wind Speed","Low Cloud", "Medium Cloud","High Cloud","Effective Cloud","Clear Radiation"]]
 for v in range(len(hava_tahmin.index)): 
     if (sehir_tah[v] == 'AKSARAY') :
-        ke[v:v+1]=ke[v:v+1]*aksaray_agırlık
+        ke[v:v+1]=ke[v:v+1]*aksaray_agirlik
     elif(sehir_tah[v] == 'NİĞDE') :
-        ke[v:v+1]=ke[v:v+1]*nigde_agırlık
+        ke[v:v+1]=ke[v:v+1]*nigde_agirlik
     elif(sehir_tah[v]  == 'KONYA') :
-        ke[v:v+1]=ke[v:v+1]*konya_agırlık
+        ke[v:v+1]=ke[v:v+1]*konya_agirlik
     elif(sehir_tah[v]  == 'KARAMAN') :
-        ke[v:v+1]=ke[v:v+1]*karaman_agırlık
+        ke[v:v+1]=ke[v:v+1]*karaman_agirlik
     elif(sehir_tah[v]  == 'KIRŞEHİR') :
-        ke[v:v+1]=ke[v:v+1]*kırsehir_agırlık
+        ke[v:v+1]=ke[v:v+1]*kirsehir_agirlik
     elif(sehir_tah[v]  == 'NEVŞEHİR') :
-        ke[v:v+1]=ke[v:v+1]*nevsehir_agırlık
+        ke[v:v+1]=ke[v:v+1]*nevsehir_agirlik
 
 
 # In[ ]:
@@ -240,9 +240,9 @@ c_tahmin=c_tahmin.reset_index(drop=True)
 
 import datetime
 tarih =datetime.datetime.now()
-zaman_damgası = datetime.datetime.timestamp(tarih)
-zaman_damgası
-z=str(zaman_damgası) + ".xlsx"
+zaman_damgasi = datetime.datetime.timestamp(tarih)
+zaman_damgasi
+z=str(zaman_damgasi) + ".xlsx"
 
 
 # In[ ]:
@@ -276,7 +276,7 @@ msg['From'] = 'info@mepasenerji.com'
 msg['To'] = 'enerjipiyasasi@mepasenerji.com'
 eklenti_dosya_ismi=z
 dsgFilename='tahmin.xlsx'
-msg.attach(MIMEText("merhaba K3 Random Forest tahmini ektedir.Saygılarımla"))
+msg.attach(MIMEText("merhaba K3 Random Forest tahmini ektedir.Saygilarimla"))
 with(open(eklenti_dosya_ismi,'rb')) as eklenti_dosyasi:
     payload=MIMEBase('application', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet',name=dsgFilename)
     payload.set_payload(eklenti_dosyasi.read())
